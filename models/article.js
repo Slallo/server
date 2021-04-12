@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const artcleSchema = new Schema(
+const articleSchema = new Schema(
   {
     title: {
       type: String,
@@ -17,4 +17,4 @@ const artcleSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Article", artcleSchema);
+module.exports = mongoose.model("Article", articleSchema);
