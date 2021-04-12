@@ -6,9 +6,7 @@ const graphqlResolvers = require("./graphql/resolvers");
 const mongoose = require("mongoose");
 
 app.get("/", (req, res) => {
-  res.send(
-    `Hello World! ${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}`
-  );
+  res.send(`Hello World!`);
 });
 
 app.listen(process.env.PORT || 5000);
