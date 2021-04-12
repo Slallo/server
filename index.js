@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
-const graphqlHttp = require("express-graphql");
+const { graphqlHTTP } = require("express-graphql");
 const graphqlSchema = require("./graphql/schema");
 const graphqlResolvers = require("./graphql/resolvers");
+const mongoose = require("mongoose");
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -16,13 +17,13 @@ app.get("/ehi", function (req, res) {
 
 app.use(
   "/graphql",
-  graphqlHttp({
+  graphqlHTTP({
     schema: graphqlSchema,
     rootValue: graphqlResolvers,
     graphiql: true,
   })
 );
-const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@sandbox.dnjvp.mongodb.net${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-uox7n.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose
   .connect(uri, options)
