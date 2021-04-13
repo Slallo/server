@@ -15,13 +15,13 @@ app.get("/ehi", function (req, res) {
   res.json({ title: "Titolo" });
 });
 
-app.get("/articles", function (req, res, next) {
+app.get("/articles", function (req, res) {
   graphqlResolvers.articles
     .find({})
     .then(function (articles) {
       res.send(articles);
     })
-    .catch(next);
+    .catch(error);
 });
 
 app.use(
