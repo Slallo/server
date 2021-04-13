@@ -4,6 +4,7 @@ const { graphqlHTTP } = require("express-graphql");
 const graphqlSchema = require("./graphql/schema");
 const graphqlResolvers = require("./graphql/resolvers");
 const mongoose = require("mongoose");
+const router = express.Router();
 
 app.get("/", (req, res) => {
   res.send(`Hello World!`);
@@ -13,6 +14,15 @@ app.listen(process.env.PORT || 5000);
 
 app.get("/ehi", function (req, res) {
   res.json({ title: "Titolo" });
+});
+
+router.get("/articles", function (req, res, next) {
+  graphqlResolvers.articles
+    .find({})
+    .then(function (articles) {
+      res.send(articles);
+    })
+    .catch(next);
 });
 
 app.use(
@@ -32,3 +42,5 @@ mongoose
   .catch((error) => {
     throw error;
   });
+
+app.use(express.static("public"));
