@@ -4,7 +4,6 @@ const { graphqlHTTP } = require("express-graphql");
 const graphqlSchema = require("./graphql/schema");
 const graphqlResolvers = require("./graphql/resolvers");
 const mongoose = require("mongoose");
-const router = express.Router();
 
 app.get("/", (req, res) => {
   res.send(`Hello World!`);
@@ -16,7 +15,7 @@ app.get("/ehi", function (req, res) {
   res.json({ title: "Titolo" });
 });
 
-router.get("/articles", function (req, res, next) {
+app.get("/articles", function (req, res, next) {
   graphqlResolvers.articles
     .find({})
     .then(function (articles) {
