@@ -4,12 +4,15 @@ const { graphqlHTTP } = require("express-graphql");
 const graphqlSchema = require("./graphql/schema");
 const graphqlResolvers = require("./graphql/resolvers");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 app.get("/", (req, res) => {
   res.send(`Hello World!`);
 });
 
 app.listen(process.env.PORT || 5000);
+
+app.use(cors());
 
 app.use(
   "/graphql",
