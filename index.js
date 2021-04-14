@@ -4,7 +4,7 @@ const { graphqlHTTP } = require("express-graphql");
 const graphqlSchema = require("./graphql/schema");
 const graphqlResolvers = require("./graphql/resolvers");
 const mongoose = require("mongoose");
-const router = express.Router();
+const cors = require("cors");
 
 app.get("/", (req, res) => {
   res.send(`Hello World!`);
@@ -12,22 +12,7 @@ app.get("/", (req, res) => {
 
 app.listen(process.env.PORT || 5000);
 
-app.get("/ehi", function (req, res) {
-  res.json({ title: "Titolo" });
-});
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET,HEAD,OPTIONS,POST,PUT,DELETE"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  next();
-});
+app.use(cors());
 
 app.use(
   "/graphql",
