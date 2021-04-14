@@ -4,6 +4,7 @@ const { graphqlHTTP } = require("express-graphql");
 const graphqlSchema = require("./graphql/schema");
 const graphqlResolvers = require("./graphql/resolvers");
 const mongoose = require("mongoose");
+const router = express.Router();
 
 app.get("/", (req, res) => {
   res.send(`Hello World!`);
@@ -15,13 +16,17 @@ app.get("/ehi", function (req, res) {
   res.json({ title: "Titolo" });
 });
 
-app.get("/articles", function (req, res) {
-  graphqlResolvers.articles
-    .find({})
-    .then(function (articles) {
-      res.send(articles);
-    })
-    .catch(error);
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,OPTIONS,POST,PUT,DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
 });
 
 app.use(
@@ -41,5 +46,3 @@ mongoose
   .catch((error) => {
     throw error;
   });
-
-app.use(express.static("public"));
