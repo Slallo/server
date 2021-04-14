@@ -10,12 +10,11 @@ app.get("/", (req, res) => {
   res.send(`Hello World!`);
 });
 
-app.listen(process.env.PORT || 5000);
-
 app.use(cors());
 
 app.use(
   "/graphql",
+  bodyParser.json(),
   graphqlHTTP({
     schema: graphqlSchema,
     rootValue: graphqlResolvers,
@@ -31,3 +30,5 @@ mongoose
   .catch((error) => {
     throw error;
   });
+
+app.listen(process.env.PORT || 5000);
