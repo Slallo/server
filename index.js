@@ -15,7 +15,7 @@ app.listen(process.env.PORT || 5000);
 app.use(
   "/graphql",
   cors(),
-  graphqlHttp(() => ({
+  graphqlHTTP(() => ({
     schema: graphqlSchema,
     rootValue: graphqlResolvers,
     graphiql: true,
