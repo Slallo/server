@@ -12,6 +12,10 @@ const positionSchema = new Schema(
     notes: {
       type: String,
     },
+    coordinates: {
+      type: Array,
+      required: true,
+    },
   },
   { timestamps: true }
 );
