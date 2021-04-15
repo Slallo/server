@@ -10,7 +10,10 @@ app.get("/", (req, res) => {
   res.send(`Hello World!`);
 });
 
-app.listen(process.env.PORT || 5000);
+app.post("/new", (req, res) => {
+  console.log(req);
+  res.send(req);
+});
 
 app.use(
   "/graphql",
@@ -26,7 +29,9 @@ const uri = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@s
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose
   .connect(uri, options)
-  .then(() => app.listen(3000, console.log("Server is running")))
+  .then(() =>
+    app.listen(process.env.PORT || 5000, console.log("Server is running"))
+  )
   .catch((error) => {
     throw error;
   });
