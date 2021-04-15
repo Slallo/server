@@ -2,25 +2,25 @@ const { buildSchema } = require("graphql");
 
 module.exports = buildSchema(`
 
-  type Article {
+  type Position {
     _id: ID!
-    title: String!
-    body: String!
+    type: String!
+    notes: String
     createdAt: String!
   }
 
 
-  input ArticleInput {
-    title: String!
-    body: String!
+  input PositionInput {
+    type: String!
+    notes: String
   }
 
   type Query {
-    articles:[Article!]
+    positions:[Position!]
   }
 
   type Mutation {
-    createArticle(article:ArticleInput): Article
+    createPosition(article:PositionInput): Position
   }
 
   schema {

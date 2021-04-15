@@ -1,14 +1,14 @@
 const Article = require("../../models/article");
 
 module.exports = {
-  articles: async () => {
+  positions: async () => {
     try {
-      const articlesFetched = await Article.find();
-      return articlesFetched.map((article) => {
+      const positionsFetched = await Position.find();
+      return positionsFetched.map((article) => {
         return {
-          ...article._doc,
-          _id: article.id,
-          createdAt: new Date(article._doc.createdAt).toISOString(),
+          ...position._doc,
+          _id: position.id,
+          createdAt: new Date(position._doc.createdAt).toISOString(),
         };
       });
     } catch (error) {
@@ -16,15 +16,15 @@ module.exports = {
     }
   },
 
-  createArticle: async (args) => {
+  createPosition: async (args) => {
     try {
-      const { title, body } = args.article;
-      const article = new Article({
-        title,
-        body,
+      const { type, notes } = args.position;
+      const position = new Position({
+        type,
+        notes,
       });
-      const newArticle = await article.save();
-      return { ...newArticle._doc, _id: newArticle.id };
+      const newPosition = await position.save();
+      return { ...newPosition._doc, _id: newPosition.id };
     } catch (error) {
       throw error;
     }
