@@ -7,12 +7,14 @@ module.exports = buildSchema(`
     type: String!
     notes: String
     createdAt: String!
+    coordinates: Array!
   }
 
 
   input PositionInput {
     type: String!
     notes: String
+    coordinates: Array!
   }
 
   type Query {
