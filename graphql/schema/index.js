@@ -22,7 +22,7 @@ module.exports = buildSchema(`
   }
 
   type Mutation {
-    createPosition(article:PositionInput): Position
+    createPosition(position:PositionInput): Position
   }
 
   schema {
