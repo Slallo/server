@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+const coordinates = new GraphQLJSONObject({
+  coordinates: {
+    lat: Double,
+    lon: Double,
+  },
+});
 const positionSchema = new Schema(
   {
     type: {
@@ -12,8 +18,9 @@ const positionSchema = new Schema(
     notes: {
       type: String,
     },
+
     coordinates: {
-      type: Array,
+      type: [coordinates],
       required: true,
     },
   },
