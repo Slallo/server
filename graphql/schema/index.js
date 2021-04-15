@@ -2,19 +2,24 @@ const { buildSchema } = require("graphql");
 
 module.exports = buildSchema(`
 
+  type Coordinates {
+    lat: Float,
+    lon: Float,
+  },
+
   type Position {
     _id: ID!
     type: String!
     notes: String
     createdAt: String!
-    coordinates: Array!
+    coordinates: [Coordinates]!
   }
 
 
   input PositionInput {
     type: String!
     notes: String
-    coordinates: Array!
+    coordinates: [Coordinates]!
   }
 
   type Query {
