@@ -1,4 +1,4 @@
-const Article = require("../../models/article");
+const Position = require("../../models/position");
 
 module.exports = {
   positions: async () => {
