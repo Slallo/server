@@ -4,7 +4,7 @@ module.exports = {
   positions: async () => {
     try {
       const positionsFetched = await Position.find();
-      return positionsFetched.map((article) => {
+      return positionsFetched.map((position) => {
         return {
           ...position._doc,
           _id: position.id,
