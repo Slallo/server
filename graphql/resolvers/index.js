@@ -23,7 +23,6 @@ module.exports = {
         type,
         notes,
         coordinates,
-        createdAt: new Date(position._doc.createdAt).toISOString(),
       });
       const newPosition = await position.save();
       return { ...newPosition._doc, _id: newPosition.id };
