@@ -18,11 +18,12 @@ module.exports = {
 
   createPosition: async (args) => {
     try {
-      const { type, notes, coordinates } = args.position;
+      const { type, notes, coordinates, gravity } = args.position;
       const position = new Position({
         type,
         notes,
         coordinates,
+        gravity,
       });
       const newPosition = await position.save();
       return { ...newPosition._doc, _id: newPosition.id };
