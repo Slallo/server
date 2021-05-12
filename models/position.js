@@ -8,11 +8,12 @@ const positionSchema = new Schema(
       type: String,
       required: true,
     },
-
     notes: {
       type: String,
     },
-
+    gravity: {
+      type: String,
+    },
     coordinates: {
       type: [],
       required: true,
