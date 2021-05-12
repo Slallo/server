@@ -8,7 +8,7 @@ module.exports = buildSchema(`
     notes: String
     createdAt: String!
     coordinates: [Float]!
-    gravity: GravityEnum
+    gravity: String
   }
 
 
@@ -25,12 +25,6 @@ module.exports = buildSchema(`
 
   type Mutation {
     createPosition(position:PositionInput): Position
-  }
-
-  enum GravityEnum {
-    Bassa
-    Media
-    Alta
   }
 
   schema {
