@@ -18,9 +18,10 @@ module.exports = {
 
   createPosition: async (args) => {
     try {
-      const { type, notes, coordinates, gravity } = args.position;
+      const { type, status, notes, coordinates, gravity } = args.position;
       const position = new Position({
         type,
+        status,
         notes,
         coordinates,
         gravity,

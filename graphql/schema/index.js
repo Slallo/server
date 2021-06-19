@@ -5,6 +5,7 @@ module.exports = buildSchema(`
   type Position {
     _id: ID!
     type: String!
+    status: String!
     notes: String
     createdAt: String!
     coordinates: [Float]!
@@ -15,6 +16,7 @@ module.exports = buildSchema(`
   input PositionInput {
     type: String!
     notes: String
+    status: String!
     coordinates: [Float]!
     gravity: String!
   }
