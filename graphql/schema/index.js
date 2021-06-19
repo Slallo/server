@@ -1,11 +1,10 @@
 const { buildSchema } = require("graphql");
 
 module.exports = buildSchema(`
-
   type Position {
     _id: ID!
     type: String!
-    status: String!
+    status: String
     notes: String
     createdAt: String!
     coordinates: [Float]!
